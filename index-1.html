@@ -17,22 +17,21 @@ created om 16/12/2019 -->
 
 </head>
 <body>
-    <div class="container">
-        <div class="card">
+    <div >
+        <div class="card ">
             <!-- <div class="card-header">Harris Benedict BMI CALCULATOR</div> -->
             <br>
-            <br>
             <form class="w-80 m-auto" onsubmit="return false">
-                    <div class ="radio-toolbar">
+                    <div class ="radio-toolbar" id="radio-toolbar1">
                             Measuring Sytem   
                             <select id = "system_dropdown" class="option_css" onchange="changesystem()">
                                 <option>Select System</option>
                                 <option id="metric" name="system" value="metric"> METRIC</option>
                                 <option id="imperial" name="system" value="imperial"> IMPERIAL</option>
                             </select>
-                            <br>
+                            
                     </div>
-                <div class ="radio-toolbar"> 
+                <div class ="radio-toolbar" id="radio-toolbar2"> 
                         Gender        
                         <select id = "gender_dropdown" class="option_css">
                                 <option>Select Gender</option>
@@ -40,23 +39,26 @@ created om 16/12/2019 -->
                                 <option id="female" name="gender" value="female"> Female</option>
                         </select>
                 </div>
-                <div class="form-group">
+                <div class="form-group1">
                     <label>Age</label>
                     <input type="text" name="" placeholder="Age" id="year" class="form-control">
                 </div>
-                <div class="form-group">
+                <div class="form-group2">
                         <label>Height</label>
                         <input type="text" name="" id="height" placeholder="height"class="form-control">
                 </div>
                
-                <div class="form-group">
+                <div class="form-group3">
                         <label>Weight</label>
                         <input type="text" name="" id="weight"placeholder="weight"class="form-control">
+                        <br>
                 </div>
                 <div>
-                        <label ><h4>You Daily Activity</h4></label>
+                        
+                        <!-- <label ><h4>You Daily Activity</h4></label> -->
                         
                             <select id = "activity_dropdown" class="option_css">
+                                    <option>Select Activity</option>
                                     <option id="sedentary" name="activity" value="sedentary">little or no exercise</option>
                                     <option id="lightly_active"name="activity" value="lightly_active">light exercise/sports 1-3 days/week</option>
                                     <option id="moderatetely_active" name="activity" value="moderatetely_active">moderate exercise/sports 3-5 days/week</option>
@@ -68,6 +70,7 @@ created om 16/12/2019 -->
                 <br>
                 <div class ="radio-toolbar">
                     <select id ="goal_dropdown"class="option_css">
+                        <option>Goals</option>
                         <option id ="musclegain" name="goals" value="muscle_gain">Gain Muscle</option>
                         <option id ="looseweight" name="goals" value="loose_weight">Loose Weight / Maintain Muscle </option>
                     </select>
@@ -79,18 +82,19 @@ created om 16/12/2019 -->
                 </div>
                 <div class="form-group">
                     <br>
-                    <output><h4>Your Daily Calorie Target is : </h4></output>
+                    <output><h4>Your Daily Calorie Target </h4></output>
                     <output type="number" name="" id="Callorievalue" class="result"></output>
                 </div>
                 <div class="form-group">
                     <br>
-                    <br>
-                    <h4> Your Daily Required Callorie Accordig to Activity</h4>
+                    
+                    <output><h4> Your Daily Required Callorie Accordig to Activity</h4></output>
                     <output type="number" name="" id="Calculatevalue" class= "result"></output>
                 </div>
                 <div class="form-group">
                     <br>
-                    <h4> Required Callorie for Gaining or Loosing</h4>
+                    
+                    <output><h4> Required Callorie for Gaining or Loosing</h4></output>
                     <output type="number" name="" id="Calculatecal" class= "result"></output>
                 </div>
             </form>
@@ -224,7 +228,38 @@ created om 16/12/2019 -->
 </body>
 
 <style>
+#radio-toolbar1{
+float:left;
+width:40%;
+overflow:hidden;
+}
+#radio-toolbar2{
+float:right;
+width:40%;
+overflow:hidden;
+}
 
+.form-group1{
+
+float:left;
+width:30%;
+overflow:hidden;
+padding-right: 3%;
+}
+.form-group2{
+
+float:center;
+width:30%;
+overflow:hidden;
+padding-left: 3%;
+}
+.form-group3{
+
+float:right;
+width:30%;
+overflow:hidden;
+padding-left: 3%;
+}
 .option_css {
     display: block;
     font-size: 16px;
@@ -275,7 +310,7 @@ created om 16/12/2019 -->
     border-radius: 4px;
     -webkit-border-radius: 40px; 
 	-moz-border-radius: 40px; 
-	border-radius: 40px; 
+	border-radius: 10px; 
 
 }
 .calc_button:hover {
@@ -292,7 +327,7 @@ created om 16/12/2019 -->
 }
 .result{
     font-weight: bold;
-    font-size: 300%;
+    font-size: 200%;
     font-family: myFirstFont;
     src: url(sansation_bold.woff);
     font-weight: bold;

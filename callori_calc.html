@@ -29,7 +29,7 @@ created om 16/12/2019 -->
         </ul>
         <!-- fieldsets -->
         <fieldset>
-        <h2 class="fs-title">Calorie Calculator</h2>
+        <!-- <h2 class="fs-title">Calorie Calculator</h2> -->
         <h3 class="fs-subtitle">Please fill all the section</h3>
         <h3 class="fs-subtitle">Measuring Sytem</h3>   
         <select id = "system_dropdown" class="option_css" onchange="changesystem()">
@@ -37,13 +37,13 @@ created om 16/12/2019 -->
                 <option id="metric" name="system" value="metric"> METRIC</option>
                 <option id="imperial" name="system" value="imperial"> IMPERIAL</option>
         </select>
-        <h3 class="fs-subtitle">Gender</h3>        
+        <h3 class="fs-subtitle"id="gender">Gender</h3>        
         <select id = "gender_dropdown" class="option_css">
                 <option>Select Gender</option>
                 <option id="male" name="gender" value="male"> Male</option>
                 <option id="female" name="gender" value="female"> Female</option>
         </select>
-        <div class="form-group">
+        <div class="form-group" id= "age">
             <h3 class="fs-subtitle">Age</h3>
             <input type="text" name="" placeholder="Age" id="year" class="form-control">
         </div>
@@ -55,7 +55,7 @@ created om 16/12/2019 -->
             <h3 class="fs-subtitle">Weight</h3>
             <input type="text" name="" id="weight"placeholder="weight"class="form-control">
         </div>
-        <br>
+        <label><h2 id ="pad"></h2></label>
         <select id = "activity_dropdown" class="option_css">
             <option>Select Activity</option>
             <option id="sedentary" name="activity" value="sedentary">little or no exercise</option>
@@ -64,6 +64,7 @@ created om 16/12/2019 -->
             <option id="very_active"name="activity" value="very_active">hard exercise/sports 6-7 days a week</option>
             <option id="extra_active"name="activity" value="extra_active">very hard exercise/sports & physical job or 2x training</option>
         </select>
+        
         <br>
         <select id ="goal_dropdown"class="option_css">
             <option>Goals</option>
@@ -236,6 +237,15 @@ created om 16/12/2019 -->
             background: rgb(0, 0, 0);
             color: white;
         }
+        #gender{
+            padding-top: 20px;
+        }
+        #age{
+            padding-top: 12px;
+        }
+        #activity{
+            padding-top: 50px;
+        }
         .form-group1{
 
             float:left;
@@ -243,6 +253,7 @@ created om 16/12/2019 -->
             overflow:hidden;
             padding-right: 3%;
             text-align: left;
+            padding-bottom: 10px;
         }
         .form-group2{
 
@@ -250,6 +261,7 @@ created om 16/12/2019 -->
             width:45%;
             overflow:hidden;
             text-align: left;
+            padding-bottom: 10px;
         
         }
         .option_css {

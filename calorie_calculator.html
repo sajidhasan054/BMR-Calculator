@@ -1,0 +1,760 @@
+<!-- author Sajid Hasan Sifat
+mail: sajidhasan054@gmail.com
+
+created om 16/12/2019 -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+      <!-- Latest compiled and minified CSS -->
+
+    <script src= "https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>  
+    <script src= "https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+  
+</head>
+<body>
+    <!-- multistep form -->
+    <form id="msform">
+        <!-- progressbar -->
+        <ul id="progressbar">
+        <li class="active">Input</li>
+        <li>Results</li>
+        </ul>
+        <!-- fieldsets -->
+        <fieldset>
+        <!-- <h2 class="fs-title">Calorie Calculator</h2> -->
+        <!-- <h3 class="fs-subtitle">Please fill all the section</h3> -->
+        <h3 class="fs-subtitle" id="description"><b>The Metabolic London Calorie Calculator</b> helps you understand your daily calorie needs based on you, and your activity level as well as what level you are trying to achieve.The calculator uses the Harris–Benedict equations revised by Mifflin and St Jeor in 1990 & physical activity level.</h3>
+        <div class="form-system">
+            <h3 class="fs-subtitle" >Measuring Sytem</h3>   
+            <select id = "system_dropdown" class="option_css" onchange="changesystem()">
+                <option>Select System</option>
+                <option id="metric" name="system" value="metric"> Metric</option>
+                <option id="imperial" name="system" value="imperial"> Imperial</option>
+            </select>
+        </div> 
+        
+        <div class="form-gender">
+            <h3 class="fs-subtitle"id="gender">Gender</h3>        
+            <select id = "gender_dropdown" class="option_css">
+                <option>Select Gender</option>
+                <option id="male" name="gender" value="male"> Male</option>
+                <option id="female" name="gender" value="female"> Female</option>
+            </select>
+        </div>
+        
+        <div class="form-group1" id= "age">
+            <h3 class="fs-subtitle">Age</h3>
+            <input type="text" name="" placeholder="Age" id="year" class="form-control">
+        </div>
+        <div class="form-group2">
+            <h3 class="fs-subtitle">Height</h3>
+            <input type="text" name="" id="height" placeholder="height"class="form-control">
+        </div>
+        <div class="form-group3">
+            <h3 class="fs-subtitle">Weight</h3>
+            <input type="text" name="" id="weight"placeholder="weight"class="form-control">
+        </div>
+        <div class="activity_dropdown">
+            <!-- <label><h2 id ="pad"></h2></label> -->
+            <h3 class="fs-subtitle"id="gender">Your Activity</h3> 
+            <select id = "activity_dropdown" class="option_css">
+                <option>Select Activity</option>
+                <option id="sedentary" name="activity" value="sedentary">Office worker getting little or no exercise</option>
+                <option id="lightly_active"name="activity" value="lightly_active">light exercise/sports 1-3 days/week</option>
+                <option id="moderatetely_active" name="activity" value="moderatetely_active">moderate exercise/sports 3-5 days/week</option>
+                <option id="very_active"name="activity" value="very_active">hard exercise/sports 6-7 days a week</option>
+                <option id="extra_active"name="activity" value="extra_active">very hard exercise/sports & physical job or 2x training</option>
+            </select>
+        </div>
+        <div class="goal_dropdown">
+            <h3 class="fs-subtitle"id="gender">Your Goal</h3> 
+            <select id ="goal_dropdown"class="option_css">
+                <option>Goals</option>
+                <option id ="maintainweight" name="goals" value="maintaian_weight">Maintain Muscle </option>
+                <option id ="mild weight loss" name="goals" value="mild_weight_loss">Mild weight loss 0.25 kg/week</option>
+                <option id ="weight loss" name="goals" value="weight_loss">Weight loss 0.5 kg/week</option>
+                <option id ="extreme weight loss" name="goals" value="extreme_weight_loss">Extreme weight loss 1 kg/week</option>
+                <option id ="mild weight gain" name="goals" value="mild_weight_gain">Mild weight gain 0.25 kg/week</option>
+                <option id ="weight gain" name="goals" value="weight_gain">Weight gain 0.5 kg/week</option>
+                <option id ="fast Weight" name="goals" value="fast_Weight">Fast Weight gain 1 kg/week </option>
+    
+            </select>
+        </div>
+        
+        <input type="button" name="next" class="next action-button"onclick="getvalue();calcutalevalue();calcutaledcal();calcutaledcalorie()" value="CALCULATE" />
+        </fieldset>
+        <fieldset>
+        <h2 class="fs-title">results</h2>
+        <!-- <h3 class="fs-subtitle">You calorie Counts</h3> -->
+        
+        <div class="form-group-hide">
+                <!-- <output><h9 class="fs-subtitle">Your Daily Required Calorie Accordig to Activity</h9></output> -->
+                <output  type="number" name="" id="Calculatevalue" class= "result"></output>
+        </div> 
+        <div class="form-group">
+                
+                <output type="number" name="" id="Calculatecal" class= "result"></output>
+                <output><h9 class="fs-subtitle"><b>Calories</b></h9></output>
+        </div>
+
+        <div class="form-group">
+            <output><h9 class="fs-subtitle"><b>Your Basal Metabolic Rate (BMR) is </b></h9></output>
+            <output type="number" name="" id="Callorievalue" class="result"></output>
+
+            <table class="form-group"> 
+                <tr>
+                    <th>Goals</th>
+                    <th>Calorie</th>
+                </tr>
+                <tr>
+                    <th><output><h9 class="fs-subtitle">Maintain Muscle : </h9></output></th>
+                    <th><output type="number" name="" id="Calculatecal1" class="result"></output></th>
+                </tr>
+                <tr>
+                    <th><output><h9 class="fs-subtitle">Mild weight loss 0.25 kg/week : </h9></output></th>
+                    <th><output type="number" name="" id="Calculatecal2" class="result"></output></th>
+                </tr>
+                <tr>
+                    <th><output><h9 class="fs-subtitle">Weight loss 0.5 kg/week : </h9></output></th>
+                    <th><output type="number" name="" id="Calculatecal3" class="result"></output></th>
+                </tr>
+                <tr>
+                    <th><output><h9 class="fs-subtitle">Extreme weight loss 1 kg/week : </h9></output></th>
+                    <th><output type="number" name="" id="Calculatecal4" class="result"></output></th>
+                </tr>
+                <tr>
+                    <th><output><h9 class="fs-subtitle">Mild weight gain 0.25 kg/week : </h9></output></th>
+                    <th><output type="number" name="" id="Calculatecal5" class="result"></output></th>
+                </tr>
+                <tr>
+                    <th><output><h9 class="fs-subtitle">Weight gain 0.5 kg/week : </h9></output></th>
+                    <th><output type="number" name="" id="Calculatecal6" class="result"></output></th>
+                </tr>
+                <tr>
+                    <th><output><h9 class="fs-subtitle">Fast Weight gain 1 kg/week : </h9></output></th>
+                    <th><output type="number" name="" id="Calculatecal7" class="result"></output></th>
+                </tr>
+            </table>
+        </div>
+            <input type="button" name="previous" class="previous action-button" onClick="document.location.reload(true)" value="RESET" />
+        
+        
+        </fieldset>
+    </form>
+
+    <style>
+
+            /*custom font*/
+        @import url(https://fonts.googleapis.com/css?family=Montserrat);
+        
+        /*basic reset*/
+        * {margin: 0; padding: 0;}
+        
+        html {
+            height: 100%;
+            /*Image only BG fallback*/
+            
+            /*background = gradient + image pattern combo*/
+            background:white;
+                /* linear-gradient(rgba(7, 7, 7, 0.6), rgb(138, 137, 137,0.4)); */
+        }
+        
+        body {
+            font-family: montserrat, arial, verdana;
+        }
+        /*form styles*/
+        #msform {
+            /* width: 75%; */
+            margin: 5px auto;
+            text-align: center;
+            /* position: relative; */
+            /* border: 5px; */
+            border-color: #000000;
+        }
+        #msform fieldset {
+            background: #ffffff;
+            border: none;
+            border-radius: 3px;
+            /* box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.4); */
+            /* padding: 5px 30px; */
+            box-sizing: border-box;
+            /* width: 80%; */
+            margin: 0 10%;
+            border-color: #000000;
+            
+            /*stacking fieldsets above each other*/
+            position: relative;
+        }
+        /*Hide all except first fieldset*/
+        #msform fieldset:not(:first-of-type) {
+            display: none;
+        }
+        /*inputs*/
+        #msform input, #msform textarea {
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-bottom: 5px;
+            /* width: 100%; */
+            box-sizing: border-box;
+            font-family: montserrat;
+            color: #2C3E50;
+            font-size: 13px;
+        }
+        /*buttons*/
+        #msform .action-button {
+            display: inline-block;
+            background-color:#ffffff;
+            padding: 10px 40px;
+            font-family: sans-serif, Arial;
+            font-size: 16px;
+            border: 2px solid #444;
+            border-radius: 4px;
+            -webkit-border-radius: 10px; 
+            -moz-border-radius: 40px;
+            width: 200px;
+        }
+        #msform .action-button:hover, #msform .action-button:focus {
+            box-shadow: 0 0 0 2px rgb(15, 15, 15), 0 0 0 3px rgb(117, 117, 117);
+            background-color: #0c0c0c;
+            color: #ffffff;
+        }
+        /* Extra small devices (phones, 300px and down) */
+        @media only screen and (max-width: 992px) {
+            #msform {width:100%;}
+            #msform input, #msform textarea{ width:100%;}
+            .form-system{width:80%;float: left;}
+            .form-gender{width:80%;float: left;}
+            .activity_dropdown{width:100%;float: left;}
+            .goal_dropdown{width:100%;float: right;}
+        }
+        
+
+        /* Extra large devices (large laptops and desktops, 1200px and up) */
+        @media only screen and (min-width: 1200px) {
+            #msform {width:80%;}
+            #msform input, #msform textarea{ width:100%;}
+            .form-system{width:45%; float: left;}
+            .form-gender{width:45%; float: right;}
+            .activity_dropdown{width:45%;float: left;}
+            .goal_dropdown{width:45%;float: right;}
+        }
+
+        /*table*/
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            }
+
+        td, th {
+            text-align: left;
+            padding: 8px;
+        }
+            
+        tr:nth-child(even) {
+            background-color: whitesmoke;
+        }
+            
+        /*headings*/
+        .fs-title {
+            font-size: 20px;
+            text-transform: uppercase;
+            color: #000000;
+            margin-bottom: 10px;
+        }
+        .fs-subtitle {
+            font-weight: normal;
+            font-size: 13px;
+            color: #000000;
+            margin-bottom: 5px;
+            text-align:left;
+            align-content: left;
+            padding-top:12px;
+        }
+        /*progressbar*/
+        #progressbar {
+            margin-bottom: 5px;
+            overflow: hidden;
+            /*CSS counters to number the steps*/
+            counter-reset: step;
+        }
+        #progressbar li {
+            list-style-type: none;
+            color: grey;
+            text-transform: uppercase;
+            font-size: 9px;
+            width: 50%;
+            float: left;
+            position: relative;
+        }
+        #progressbar li:before {
+            content: counter(step);
+            counter-increment: step;
+            width: 20px;
+            line-height: 20px;
+            display: block;
+            font-size: 10px;
+            color: #ffffff;
+            background: grey;
+            border-radius: 3px;
+            margin: 0 auto 5px auto;
+        }
+        /*progressbar connectors*/
+        #progressbar li:after {
+            content: '';
+            width: 100%;
+            height: 2px;
+            background: grey;
+            position: absolute;
+            left: -50%;
+            top: 9px;
+            z-index: -1; /*put it behind the numbers*/
+        }
+        #progressbar li:first-child:after {
+            /*connector not needed before the first step*/
+            content: none; 
+        }
+        /*marking active/completed steps green*/
+        /*The number of the step and the connector before it = green*/
+        #progressbar li.active:before,  #progressbar li.active:after{
+            background: rgb(0, 0, 0);
+            color: white;
+        }
+        #gender{
+            padding-top: 20px;
+        }
+        #age{
+            padding-top: 12px;
+        }
+        #activity{
+            padding-top: 50px;
+        }
+        #description{
+            text-align: justify;
+        }
+        .action-button{
+            margin-top: 10px;
+        }
+        .form-gender{
+            /* float:right; */
+            /* width:45%; */
+            overflow:hidden;
+            text-align: left;
+        }
+        .form-system{
+            /* float:left; */
+            /* width:45%; */
+            overflow:hidden;
+            text-align: left;
+            padding-top: 8px;
+        }
+        .form-group-hide{
+            display: none;
+        }
+        .form-group1{
+
+            float:left;
+            width:30%;
+            overflow:hidden;
+            text-align: left;
+            padding-right: 5%;
+        }
+        .form-group2{
+            float:left;
+            width:30%;
+            overflow:hidden;
+            text-align: left;
+            padding-top: 12px;
+        }
+        .form-group3{
+
+            float:right;
+            width:30%;
+            overflow:hidden;
+            text-align: left;
+            padding-top: 12px;
+            padding-left: 3%;
+        }
+        .activity_dropdown{
+            float:left;
+            width:45%;
+            overflow:hidden;
+            text-align: left;
+            padding-bottom: 10px;
+        }
+        .goal_dropdown{
+            float:right;
+            width:45%;
+            overflow:hidden;
+            text-align: left;
+            padding-bottom: 10px;
+        }
+        .option_css {
+            display: block;
+            font-size: 16px;
+            font-family: sans-serif;
+            font-weight: 500;
+            color: #444;
+            line-height: 1.5;
+        
+            width: 100%;
+            max-width: 100%; 
+            box-sizing: border-box;
+            margin: 0;
+            border: 1px solid #aaa;
+            box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+            /* border-radius: .5em; */
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            appearance: none;
+            background-color: #fff;
+            background-repeat: no-repeat, repeat;
+            background-position: right .7em top 50%, 0 0;
+            background-size: .65em auto, 100%;
+            padding: 12px;
+          /* -webkit-border-radius: 8px; 
+            -moz-border-radius: 8px; */
+        }
+        .option_css::-ms-expand {
+            display: none;
+        }
+        .option_css:hover {
+            border-color: #888;
+        }
+        .option_css:focus {
+            border-color: #aaa;
+            /* box-shadow: 0 0 1px 3px rgba(0, 2, 3, 0.7);
+            box-shadow: 0 0 0 3px -moz-mac-focusring;
+            color: #222;  */
+            outline: none;
+        }
+        .option_css option {
+            font-weight:normal;
+        }
+        .calc_button {
+            display: inline-block;
+            background-color:#ffffff;
+            /* padding: 10px 40px; */
+            font-family: sans-serif, Arial;
+            font-size: 16px;
+            border: 2px solid #444;
+            border-radius: 4px;
+            /* -webkit-border-radius: 40px; 
+            -moz-border-radius: 40px; */
+        
+        }
+        .calc_button:hover {
+          background-color: #0c0c0c;
+          color: #ffffff;
+          
+        }
+         
+        /* .calc_button {
+          margin-top: 15px;
+        } */
+        .title {
+            align-content: center;
+        }
+        .result{
+            font-weight: bold;
+            
+            font-family: myFirstFont;
+            src: url(sansation_bold.woff);
+            font-weight: bold;
+            /* -webkit-border-radius: 40px; 
+            -moz-border-radius: 40px;  */
+            border-radius: 40px; 
+            font-size: 20px;
+
+        }
+        .calcmuscle {
+            display: inline-block;
+            background-color:#ffffff;
+            padding: 10px 40px;
+            font-family: sans-serif, Arial;
+            font-size: 16px;
+            border: 2px solid #444;
+            /* -webkit-border-radius: 40px; 
+            -moz-border-radius: 40px;  */
+            border-radius: 40px; 
+        }
+        .calcmuscle:hover{
+          background-color: #0c0c0c;
+          color: #ffffff;
+          -webkit-border-radius: 40px; 
+            -moz-border-radius: 40px; 
+            border-radius: 40px;
+          
+        }
+        
+        
+    </style>
+
+    <script>
+        
+            //jQuery time
+            var current_fs, next_fs, previous_fs; //fieldsets
+            var left, opacity, scale; //fieldset properties which we will animate
+            var animating; //flag to prevent quick multi-click glitches
+            
+            $(".next").click(function(){
+                if(animating) return false;
+                animating = true;
+                
+                current_fs = $(this).parent();
+                next_fs = $(this).parent().next();
+                
+            //activate next step on progressbar using the index of next_fs
+            $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+            
+            //show the next fieldset
+            next_fs.show(); 
+            //hide the current fieldset with style
+            current_fs.animate({opacity: 0}, {
+                step: function(now, mx) {
+                    //as the opacity of current_fs reduces to 0 - stored in "now"
+                    //1. scale current_fs down to 50%
+                    scale = 1 - (1 - now) * 0.5;
+                    //2. bring next_fs from the right(50%)
+                    left = (now * 50)+"%";
+                    //3. increase opacity of next_fs to 1 as it moves in
+                    opacity = 1 - now;
+                    current_fs.css({
+                'transform': 'scale('+scale+')',
+                'position': 'absolute'
+                });
+                    next_fs.css({'left': left, 'opacity': opacity});
+                }, 
+                duration: 800, 
+                complete: function(){
+                    current_fs.hide();
+                    animating = false;
+                }, 
+                //this comes from the custom easing plugin
+                easing: 'easeInOutBack'
+            });
+            });
+            
+            $(".previous").click(function(){
+                if(animating) return false;
+                animating = true;
+                window.location.reload();
+                current_fs = $(this).parent();
+                previous_fs = $(this).parent().prev();
+                
+                //de-activate current step on progressbar
+                $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+                
+                //show the previous fieldset
+                previous_fs.show(); 
+                //hide the current fieldset with style
+                current_fs.animate({opacity: 0}, {
+                    step: function(now, mx) {
+                        //as the opacity of current_fs reduces to 0 - stored in "now"
+                        //1. scale previous_fs from 80% to 100%
+                        scale = 0.8 + (1 - now) * 0.2;
+                        //2. take current_fs to the right(50%) - from 0%
+                        left = ((1-now) * 50)+"%";
+                        //3. increase opacity of previous_fs to 1 as it moves in
+                        opacity = 1 - now;
+                        current_fs.css({'left': left});
+                        previous_fs.css({'transform': 'scale('+scale+')', 'opacity': opacity});
+                    }, 
+                    duration: 800, 
+                    complete: function(){
+                        current_fs.hide();
+                        animating = false;
+                    }, 
+                    //this comes from the custom easing plugin
+                    easing: 'easeInOutBack'
+                });
+            });
+            
+            $(".submit").click(function(){
+                return false;
+            })
+            
+            
+            function changesystem(){
+            var e = document.getElementById('system_dropdown');
+            var getsystem = e.options[e.selectedIndex].value;
+            
+            if(getsystem=="imperial"){
+                document.getElementById("height").placeholder = "in inches";
+                document.getElementById("weight").placeholder = "in pounds";
+            }
+            else if(getsystem=="metric"){
+                document.getElementById("height").placeholder = "in cm";
+                document.getElementById("weight").placeholder = "in kg";
+            }
+            
+            }
+            //get value for male n female or imperial and metric
+            function getvalue(){
+            
+            var year = document.getElementById('year').value;
+            var height = document.getElementById('height').value;
+            var weight = document.getElementById('weight').value;
+            var f = document.getElementById('system_dropdown');
+            var getsystem = f.options[f.selectedIndex].value;
+            var text1 = "Your Daily Calorie Target is :"
+            
+            var gndr = document.getElementById('gender_dropdown');
+            var getvalid = gndr.options[gndr.selectedIndex].value;
+                            
+            if(getsystem == "imperial")
+            {
+                if(getvalid == "male" ){
+                        var BMRvalue = 5+(4.54*weight)+(15.88*height)-(5*year);
+                        var newBRMvalue= Math.floor(BMRvalue);
+                        document.getElementById('Callorievalue').value = newBRMvalue;
+                    }
+                else if(getvalid == "female" ){
+                        var BMRvalue = (4.36*weight)+(15.88*height)-(5*year)-161;
+                        var newBRMvalue= Math.floor(BMRvalue);
+                        document.getElementById('Callorievalue').value = newBRMvalue;
+                    }
+            }
+            else
+            {
+                if(getvalid == "male" ){
+            
+                        var BMRvalue = 5+(10*weight)+(6.25*height)-(5*year);
+                        //var BMRvalue = height*weight;
+                        var newBRMvalue= Math.floor(BMRvalue);
+                        document.getElementById('Callorievalue').value = newBRMvalue;
+                    }
+                else if(getvalid == "female" ){
+                        var BMRvalue = (10*weight)+(6.25*height)-(5*year)-161;
+                        //var BMRvalue = height*weight;
+                        var newBRMvalue= Math.floor(BMRvalue);
+                        document.getElementById('Callorievalue').value = newBRMvalue;
+                    }
+            }
+            
+            }
+            
+            //calculate value for differfent activities
+            
+            function calcutalevalue(){
+            
+            var bmrcallorie = document.getElementById('Callorievalue').value;
+            //var getcalculatedvalue = $("input[name='activity']:checked").val();
+            var e = document.getElementById('activity_dropdown');
+            var getcalculatedvalue = e.options[e.selectedIndex].value;
+            console.log(getcalculatedvalue);
+            
+            if(getcalculatedvalue == "sedentary")
+            {
+                var calculated_callorie = bmrcallorie * 1.2;
+                var newcalculated_callorie= Math.floor(calculated_callorie);
+                document.getElementById('Calculatevalue').value = newcalculated_callorie;
+            }
+            else if(getcalculatedvalue == "lightly_active")
+            {
+                var calculated_callorie = bmrcallorie * 1.375;
+                var newcalculated_callorie= Math.floor(calculated_callorie);
+                document.getElementById('Calculatevalue').value = newcalculated_callorie;
+            }
+            else if(getcalculatedvalue == "moderatetely_active")
+            {
+                var calculated_callorie = bmrcallorie * 1.55;
+                var newcalculated_callorie= Math.floor(calculated_callorie);
+                document.getElementById('Calculatevalue').value = newcalculated_callorie;
+            }
+            else if(getcalculatedvalue == "very_active")
+            {
+                var calculated_callorie = bmrcallorie * 1.725;
+                var newcalculated_callorie= Math.floor(calculated_callorie);
+                document.getElementById('Calculatevalue').value = newcalculated_callorie;
+            }
+            else if(getcalculatedvalue == "extra_active")
+            {
+                var calculated_callorie = bmrcallorie * 1.9;
+                var newcalculated_callorie= Math.floor(calculated_callorie);
+                document.getElementById('Calculatevalue').value = newcalculated_callorie;
+            }
+            }
+            //calculate value for muscle gain or muscle loose
+            function calcutaledcalorie(){
+            
+            var gl = document.getElementById('goal_dropdown');
+            var goal_select = gl.options[gl.selectedIndex].value;
+            var calc_muscle = document.getElementById('Calculatevalue').value; 
+            if (goal_select=="maintaian_weight"){
+                var newcalc_muscle = Number(calc_muscle * 1 );
+                document.getElementById('Calculatecal').value = newcalc_muscle;
+            
+            }
+            else if(goal_select=="mild_weight_loss"){
+                var newcalc_muscle = Math.floor(calc_muscle * 0.89) ;
+                document.getElementById('Calculatecal').value = newcalc_muscle;
+            
+            }
+            else if(goal_select ="weight_loss"){
+                var newcalc_muscle = Math.floor(calc_muscle * 0.79 ) ;
+                document.getElementById('Calculatecal').value = newcalc_muscle;
+            }
+            else if(goal_select ="extreme_weight_loss"){
+                var newcalc_muscle = Math.floor(calc_muscle * 0.58) ;
+                document.getElementById('Calculatecal').value = newcalc_muscle;
+            }
+            else if(goal_select ="mild_weight_gain"){
+                var newcalc_muscle = Math.floor(calc_muscle * 1.11) ;
+                document.getElementById('Calculatecal').value = newcalc_muscle;
+            }
+            else if(goal_select ="weight_gain"){
+                var newcalc_muscle = Math.floor(calc_muscle * 1.21) ;
+                document.getElementById('Calculatecal').value = newcalc_muscle;
+            }
+            else if(goal_select ="fast_Weight"){
+                var newcalc_muscle = Math.floor(calc_muscle * 1.42) ;
+                document.getElementById('Calculatecal').value = newcalc_muscle;
+            }
+            
+            
+        }
+        //calculate table value for muscle gain or muscle loose
+        function calcutaledcal(){
+            
+            // var gl = document.getElementById('goal_dropdown');
+            // var goal_select = gl.options[gl.selectedIndex].value;
+            var calc_muscle = document.getElementById('Calculatevalue').value; 
+            var newcalc_muscle1 = Number(calc_muscle * 1 );
+            document.getElementById('Calculatecal1').value = newcalc_muscle1;
+            
+            var newcalc_muscle2 = Math.floor(calc_muscle * 0.89) ;
+            document.getElementById('Calculatecal2').value = newcalc_muscle2;
+            
+        
+            var newcalc_muscle3 = Math.floor(calc_muscle * 0.79 ) ;
+            document.getElementById('Calculatecal3').value = newcalc_muscle3;
+            
+            var newcalc_muscle4 = Math.floor(calc_muscle * 0.58) ;
+            document.getElementById('Calculatecal4').value = newcalc_muscle4;
+            
+            var newcalc_muscle5 = Math.floor(calc_muscle * 1.11) ;
+            document.getElementById('Calculatecal5').value = newcalc_muscle5;
+            
+            var newcalc_muscle6 = Math.floor(calc_muscle * 1.21) ;
+            document.getElementById('Calculatecal6').value = newcalc_muscle6;
+            
+            var newcalc_muscle7 = Math.floor(calc_muscle * 1.42) ;
+            document.getElementById('Calculatecal7').value = newcalc_muscle7;
+            
+            
+            
+        }
+                
+    </script>
+</body>
+</html>

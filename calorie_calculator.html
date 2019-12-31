@@ -23,10 +23,10 @@ created om 16/12/2019 -->
     <!-- multistep form -->
     <form id="msform">
         <!-- progressbar -->
-        <ul id="progressbar">
+        <!-- <ul id="progressbar">
         <li class="active">Input</li>
         <li>Results</li>
-        </ul>
+        </ul> -->
         <!-- fieldsets -->
         <fieldset>
         <!-- <h2 class="fs-title">Calorie Calculator</h2> -->
@@ -52,15 +52,15 @@ created om 16/12/2019 -->
         
         <div class="form-group1" id= "age">
             <h3 class="fs-subtitle">Age</h3>
-            <input type="text" name="" placeholder="Age" id="year" class="form-control">
+            <input type="text" name="" placeholder="Age" id="year" class="form-control" required>
         </div>
         <div class="form-group2">
             <h3 class="fs-subtitle">Height</h3>
-            <input type="text" name="" id="height" placeholder="height"class="form-control">
+            <input type="text" name="" id="height" placeholder="Height"class="form-control" required>
         </div>
         <div class="form-group3">
             <h3 class="fs-subtitle">Weight</h3>
-            <input type="text" name="" id="weight"placeholder="weight"class="form-control">
+            <input type="text" name="" id="weight"placeholder="Weight"class="form-control" required>
         </div>
         <div class="activity_dropdown">
             <!-- <label><h2 id ="pad"></h2></label> -->
@@ -78,13 +78,13 @@ created om 16/12/2019 -->
             <h3 class="fs-subtitle"id="gender">Your Goal</h3> 
             <select id ="goal_dropdown"class="option_css">
                 <option>Goals</option>
-                <option id ="maintainweight" name="goals" value="maintaian_weight">Maintain Muscle </option>
+                <option id ="maintainweight" name="goals" value="maintaian_weight">Maintain muscle </option>
                 <option id ="mild weight loss" name="goals" value="mild_weight_loss">Mild weight loss 0.25 kg/week</option>
                 <option id ="weight loss" name="goals" value="weight_loss">Weight loss 0.5 kg/week</option>
                 <option id ="extreme weight loss" name="goals" value="extreme_weight_loss">Extreme weight loss 1 kg/week</option>
                 <option id ="mild weight gain" name="goals" value="mild_weight_gain">Mild weight gain 0.25 kg/week</option>
                 <option id ="weight gain" name="goals" value="weight_gain">Weight gain 0.5 kg/week</option>
-                <option id ="fast Weight" name="goals" value="fast_Weight">Fast Weight gain 1 kg/week </option>
+                <option id ="fast Weight" name="goals" value="fast_Weight">Fast weight gain 1 kg/week </option>
     
             </select>
         </div>
@@ -100,47 +100,56 @@ created om 16/12/2019 -->
                 <output  type="number" name="" id="Calculatevalue" class= "result"></output>
         </div> 
         <div class="form-group">
-                
-            <output><h9 class="fs-subtitle1"><b>Your result is </b></h9></output>    
-            <output type="number" name="" id="Calculatecal" class= "result"></output>
-            <output><h9 class="fs-subtitle1"><b>Calories</b></h9></output>
-        </div>
-
-        <div class="form-group">
-            <output><h9 class="fs-subtitle1"><b>Your Basal Metabolic Rate (BMR) is </b></h9></output>
-            <output type="number" name="" id="Callorievalue" class="result"></output>
-
-            <table class="form-group"> 
-                <tr>
-                    <th>Goals</th>
-                    <th>Calorie</th>
+            <table class="form-group">
+                <tr id= "tableheader2">
+                    <th>Goal</th>
+                    <th>Calories</th>
                 </tr>
                 <tr>
-                    <th><output><h9 class="fs-subtitle">Maintain Muscle : </h9></output></th>
+                    <th><output><h9 class="fs-subtitle1"><b>Your result is </b></h9></output> </th>   
+                    <th><output type="number" name="" id="Calculatecal" class= "result"></output></th>
+                </tr>
+                <tr>
+                    <th><output><h9 class="fs-subtitle1"><b>Your Basal Metabolic Rate (BMR) is </b></h9></output></th>
+                    <th><output type="number" name="" id="Callorievalue" class="result"></output></th>
+                </tr>
+            </table>  
+            
+        </div>
+        <br>
+        <div class="form-group">
+            
+            <table class="form-group"> 
+                <tr id= "tableheader">
+                    <th>Other Goals</th>
+                    <th>Calories</th>
+                </tr>
+                <tr>
+                    <th><output><h9 class="fs-subtitle2">Maintain muscle</h9></output></th>
                     <th><output type="number" name="" id="Calculatecal1" class="result"></output></th>
                 </tr>
                 <tr>
-                    <th><output><h9 class="fs-subtitle">Mild weight loss 0.25 kg/week : </h9></output></th>
+                    <th><output><h9 class="fs-subtitle2">Mild weight loss 0.25 kg/week</h9></output></th>
                     <th><output type="number" name="" id="Calculatecal2" class="result"></output></th>
                 </tr>
                 <tr>
-                    <th><output><h9 class="fs-subtitle">Weight loss 0.5 kg/week : </h9></output></th>
+                    <th><output><h9 class="fs-subtitle2">Weight loss 0.5 kg/week</h9></output></th>
                     <th><output type="number" name="" id="Calculatecal3" class="result"></output></th>
                 </tr>
                 <tr>
-                    <th><output><h9 class="fs-subtitle">Extreme weight loss 1 kg/week : </h9></output></th>
+                    <th><output><h9 class="fs-subtitle2">Extreme weight loss 1 kg/week</h9></output></th>
                     <th><output type="number" name="" id="Calculatecal4" class="result"></output></th>
                 </tr>
                 <tr>
-                    <th><output><h9 class="fs-subtitle">Mild weight gain 0.25 kg/week : </h9></output></th>
+                    <th><output><h9 class="fs-subtitle2">Mild weight gain 0.25 kg/week</h9></output></th>
                     <th><output type="number" name="" id="Calculatecal5" class="result"></output></th>
                 </tr>
                 <tr>
-                    <th><output><h9 class="fs-subtitle">Weight gain 0.5 kg/week : </h9></output></th>
+                    <th><output><h9 class="fs-subtitle2">Weight gain 0.5 kg/week</h9></output></th>
                     <th><output type="number" name="" id="Calculatecal6" class="result"></output></th>
                 </tr>
                 <tr>
-                    <th><output><h9 class="fs-subtitle">Fast Weight gain 1 kg/week : </h9></output></th>
+                    <th><output><h9 class="fs-subtitle2">Fast weight gain 1 kg/week</h9></output></th>
                     <th><output type="number" name="" id="Calculatecal7" class="result"></output></th>
                 </tr>
             </table>
@@ -183,7 +192,7 @@ created om 16/12/2019 -->
         #msform fieldset {
             background: #ffffff;
             border: none;
-            border-radius: 3px;
+            /* border-radius: 3px; */
             /* box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.4); */
             /* padding: 5px 30px; */
             box-sizing: border-box;
@@ -201,13 +210,13 @@ created om 16/12/2019 -->
         /*inputs*/
         #msform input, #msform textarea {
             padding: 15px;
-            border: 1px solid #ccc;
-            border-radius: 3px;
+            /* border: 1px solid #ccc; */
+            /* border-radius: 3px; */
             margin-bottom: 5px;
             /* width: 100%; */
             box-sizing: border-box;
             font-family: montserrat;
-            color: #2C3E50;
+            color: black;
             font-size: 13px;
         }
         /*buttons*/
@@ -217,16 +226,22 @@ created om 16/12/2019 -->
             padding: 10px 40px;
             font-family: sans-serif, Arial;
             font-size: 16px;
-            border: 2px solid #444;
+            border: 2px solid black;
             border-radius: 4px;
             -webkit-border-radius: 10px; 
             -moz-border-radius: 40px;
             width: 200px;
         }
         #msform .action-button:hover, #msform .action-button:focus {
-            box-shadow: 0 0 0 2px rgb(15, 15, 15), 0 0 0 3px rgb(117, 117, 117);
+            box-shadow: 0 0 0 2px rgb(15, 15, 15), 0 0 0 3px black;
             background-color: #0c0c0c;
             color: #ffffff;
+        }
+
+        /* placeholder */
+        ::placeholder {
+            font-family: sans-serif;
+            font-size: 16px;
         }
         /* Extra small devices (phones, 300px and down) */
         @media only screen and (max-width: 992px) {
@@ -259,10 +274,26 @@ created om 16/12/2019 -->
         td, th {
             text-align: left;
             padding: 8px;
+            border: 1px solid black;
+
         }
             
         tr:nth-child(even) {
             background-color: whitesmoke;
+        }
+        tr:hover {
+            background-color: #bfbfbf;
+        }
+        
+        #tableheader{
+            background-color: black;
+            color: white;
+            margin-top: 10px;
+        }
+        #tableheader2{
+            background-color: black;
+            color: white;
+            margin-top: 10px;
         }
             
         /*headings*/
@@ -283,6 +314,16 @@ created om 16/12/2019 -->
         }
         /* for result page */
         .fs-subtitle1{
+            font-weight: normal;
+            font-size: 20px;
+            color: #000000;
+            margin-bottom: 5px;
+            text-align:left;
+            align-content: left;
+            padding-top:12px;
+        }
+        /* for table */
+        .fs-subtitle2{
             font-weight: normal;
             font-size: 20px;
             color: #000000;
@@ -378,6 +419,10 @@ created om 16/12/2019 -->
             overflow:hidden;
             text-align: left;
             padding-right: 5%;
+            border-color: #000000;
+            border-width: 1px;
+
+            
         }
         .form-group2{
             float:left;
@@ -385,6 +430,9 @@ created om 16/12/2019 -->
             overflow:hidden;
             text-align: left;
             padding-top: 12px;
+            border-color: #000000;
+            border-width: 1px;
+
         }
         .form-group3{
 
@@ -394,6 +442,8 @@ created om 16/12/2019 -->
             text-align: left;
             padding-top: 12px;
             padding-left: 3%;
+            border-color: #000000;
+            border-width: 1px;
         }
         .activity_dropdown{
             float:left;
@@ -416,7 +466,6 @@ created om 16/12/2019 -->
             font-weight: 500;
             color: #444;
             line-height: 1.5;
-        
             width: 100%;
             max-width: 100%; 
             box-sizing: border-box;

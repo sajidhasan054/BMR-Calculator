@@ -1,6 +1,5 @@
 <!-- author Sajid Hasan Sifat
 mail: sajidhasan054@gmail.com
-
 created om 16/12/2019 -->
 
 
@@ -28,15 +27,13 @@ created om 16/12/2019 -->
         <li>Results</li>
         </ul> -->
         <!-- modal -->
-        <div id="dialogoverlay"></div> <!-- This disables and provides white overlay until user interacts with the dialog window -->
+        <!-- <div id="dialogoverlay"></div> 
             <div id="dialogbox">
-                <!-- <div id="dialogboxhead"></div> -->
                 <div id="dialogboxbody"></div>
                 <div id="dialogboxfoot"></div>
             </div>
-        </div>
+        </div> -->
         <!-- modal -->
-
         <!-- fieldsets -->
         <fieldset>
         <!-- <h2 class="fs-title">Calorie Calculator</h2> -->
@@ -62,15 +59,15 @@ created om 16/12/2019 -->
         
         <div class="form-group1" id= "age">
             <h3 class="fs-subtitle">Age</h3>
-            <input type="text" name="" placeholder="Age" id="year" class="form-control" required/>
+            <input type="text" name="" placeholder="Age" id="year" class="form-control" required>
         </div>
         <div class="form-group2">
             <h3 class="fs-subtitle">Height</h3>
-            <input type="text" name="" id="height" placeholder="Height"class="form-control" required/>
+            <input type="text" name="" id="height" placeholder="Height"class="form-control" required>
         </div>
         <div class="form-group3">
             <h3 class="fs-subtitle">Weight</h3>
-            <input type="text" name="" id="weight"placeholder="Weight"class="form-control" required/>
+            <input type="text" name="" id="weight"placeholder="Weight"class="form-control" required>
         </div>
         <div class="activity_dropdown">
             <!-- <label><h2 id ="pad"></h2></label> -->
@@ -95,10 +92,11 @@ created om 16/12/2019 -->
                 <option id ="mild weight gain" name="goals" value="mild_weight_gain">Mild weight gain 0.25 kg/week</option>
                 <option id ="weight gain" name="goals" value="weight_gain">Weight gain 0.5 kg/week</option>
                 <option id ="fast Weight" name="goals" value="fast_Weight">Fast weight gain 1 kg/week </option>
+    
             </select>
         </div>
         
-        <input type="button" name="next" class="next action-button" value="CALCULATE" onclick="validate()" />
+        <input type="button" name="next" class="next action-button"onclick="onclick=calculate()" value="CALCULATE" />
         </fieldset>
         <fieldset>
         <h2 class="fs-title">results</h2>
@@ -163,13 +161,31 @@ created om 16/12/2019 -->
                 </tr>
             </table>
         </div>
-            <input type="submit" name="previous" class="previous action-button" onClick="document.location.reload(true)" value="RESET" />
+            <input type="button" name="previous" class="previous action-button" onClick="document.location.reload(true)" value="RESET" />
         
         
         </fieldset>
     </form>
 
     <style>
+            /*custom font*/
+        @import url(https://fonts.googleapis.com/css?family=Montserrat);
+        
+        /*basic reset*/
+        * {margin: 0; padding: 0;}
+        
+        html {
+            height: 100%;
+            /*Image only BG fallback*/
+            
+            /*background = gradient + image pattern combo*/
+            background:white;
+                /* linear-gradient(rgba(7, 7, 7, 0.6), rgb(138, 137, 137,0.4)); */
+        }
+        
+        body {
+            font-family: montserrat, arial, verdana;
+        }
         /* modal */
         #dialogoverlay{
             /* display: none; */
@@ -195,29 +211,25 @@ created om 16/12/2019 -->
             border-color: black;
             border: 5px;
         }
-        #dialogbox { background:#FFF; margin:8px;}
+        #dialogbox { 
+            background:#FFF; 
+            margin:8px;
+        }
         /* #dialogbox, #dialogboxhead{ background: #666; font-size:19px; padding:10px; color:#CCC; } */
-        #dialogbox, #dialogboxbody{ background:white; font-family: sans-serif ; padding:20px; color: black; text-align:center;}
-        #dialogbox , #dialogboxfoot{ background: white; color:black; padding:10px; text-align:center; }
+        #dialogbox, #dialogboxbody{ 
+            background:white; 
+            font-family: sans-serif ; 
+            padding:20px; 
+            color: black; 
+            text-align:center;
+        }
+        #dialogbox , #dialogboxfoot{ 
+            background: white; 
+            color:black; 
+            padding:10px; 
+            text-align:center; 
+        }
         /* modal */
-            /*custom font*/
-        @import url(https://fonts.googleapis.com/css?family=Montserrat);
-        
-        /*basic reset*/
-        * {margin: 0; padding: 0;}
-        
-        html {
-            height: 100%;
-            /*Image only BG fallback*/
-            
-            /*background = gradient + image pattern combo*/
-            background:white;
-                /* linear-gradient(rgba(7, 7, 7, 0.6), rgb(138, 137, 137,0.4)); */
-        }
-        
-        body {
-            font-family: montserrat, arial, verdana;
-        }
         /*form styles*/
         #msform {
             /* width: 75%; */
@@ -265,9 +277,9 @@ created om 16/12/2019 -->
             font-family: sans-serif, Arial;
             font-size: 16px;
             border: 2px solid black;
-            /* border-radius: 4px; */
-            /* -webkit-border-radius: 10px;  */
-            /* -moz-border-radius: 40px; */
+            /* border-radius: 4px;
+            -webkit-border-radius: 10px; 
+            -moz-border-radius: 40px; */
             width: 200px;
         }
         #msform .action-button:hover, #msform .action-button:focus {
@@ -275,7 +287,6 @@ created om 16/12/2019 -->
             background-color: #0c0c0c;
             color: #ffffff;
         }
-
         /* placeholder */
         ::placeholder {
             font-family: sans-serif;
@@ -289,10 +300,8 @@ created om 16/12/2019 -->
             .form-gender{width:80%;float: left;}
             .activity_dropdown{width:100%;float: left;}
             .goal_dropdown{width:100%;float: right;}
-            #description{position: relative;}
         }
         
-
         /* Extra large devices (large laptops and desktops, 1200px and up) */
         @media only screen and (min-width: 1200px) {
             #msform {width:80%;}
@@ -302,19 +311,16 @@ created om 16/12/2019 -->
             .activity_dropdown{width:45%;float: left;}
             .goal_dropdown{width:45%;float: right;}
         }
-
         /*table*/
         table {
             font-family: arial, sans-serif;
             border-collapse: collapse;
             width: 100%;
             }
-
         td, th {
             text-align: left;
             padding: 8px;
             border: 1px solid black;
-
         }
             
         tr:nth-child(even) {
@@ -350,6 +356,8 @@ created om 16/12/2019 -->
             text-align:left;
             align-content: left;
             padding-top:12px;
+            font-family: Helvetica;
+            position: relative;
         }
         /* for result page */
         .fs-subtitle1{
@@ -364,12 +372,13 @@ created om 16/12/2019 -->
         /* for table */
         .fs-subtitle2{
             font-weight: normal;
-            font-size: 20px;
+            font-size: 15px;
             color: #000000;
             margin-bottom: 5px;
             text-align:left;
             align-content: left;
             padding-top:12px;
+            font-family: Helvetica;
         }
         /*progressbar*/
         #progressbar {
@@ -452,7 +461,6 @@ created om 16/12/2019 -->
             display: none;
         }
         .form-group1{
-
             float:left;
             width:30%;
             overflow:hidden;
@@ -460,6 +468,7 @@ created om 16/12/2019 -->
             padding-right: 5%;
             border-color: #000000;
             border-width: 1px;
+            
         }
         .form-group2{
             float:left;
@@ -469,10 +478,8 @@ created om 16/12/2019 -->
             padding-top: 12px;
             border-color: #000000;
             border-width: 1px;
-
         }
         .form-group3{
-
             float:right;
             width:30%;
             overflow:hidden;
@@ -563,14 +570,13 @@ created om 16/12/2019 -->
         }
         .result{
             font-weight: bold;
-            font-family: myFirstFont;
+            font-family: Helvetica;
             src: url(sansation_bold.woff);
             font-weight: bold;
             /* -webkit-border-radius: 40px; 
             -moz-border-radius: 40px;  */
             border-radius: 40px; 
-            font-size: 22px;
-
+            font-size: 15px;
         }
         .calcmuscle {
             display: inline-block;
@@ -596,48 +602,7 @@ created om 16/12/2019 -->
     </style>
 
     <script>
-        // modal
-        function CustomAlert(){ /* The code below will start the custom box
-        2 methods - render, ok */
-            this.render = function(dialog){
-                var winW = window.innerWidth;
-                var winH = window.innerHeight;
-                var dialogoverlay = document.getElementById('dialogoverlay');
-                var dialogbox = document.getElementById('dialogbox');
-                dialogoverlay.style.display = "block";
-                dialogoverlay.style.height = winH+"px";
-                dialogbox.style.left = (winW/2) - (550 * .5)+"px"; /* 550 = width of dialog box */
-                dialogbox.style.top = "100px";
-                dialogbox.style.display = "block";
-                // document.getElementById('dialogboxhead').innerHTML = "Subject Here!";
-                document.getElementById('dialogboxbody').innerHTML = dialog;
-                document.getElementById('dialogboxfoot').innerHTML = '<button class= "action-button" onclick="Alert.ok()">RETRY</button>';
-            }
-            this.ok = function(){
-                document.getElementById('dialogbox').style.display = "none";
-                document.getElementById('dialogoverlay').style.display = "none";
-            }
-        }
-        var Alert = new CustomAlert();
-        // modal
-        var val_year = document.getElementById('year');
-        var val_height = document.getElementById('height');
-        var val_weight = document.getElementById('weight');
-        // input validation
-        function validate(){
-            if( val_year.value == "" || val_height.value == "" || val_weight.value == "")
-            {
-                // alert("Fill up all the requirements");
-                // window.location.reload();
-                Alert.render('Fill in all the boxes');
-                CustomAlert();
-                return false;
-            }
-            else{
-                calculate();
-            }
-            
-        }
+        //change system
         function changesystem(){
             var e = document.getElementById('system_dropdown');
             var getsystem = e.options[e.selectedIndex].value;
@@ -651,10 +616,91 @@ created om 16/12/2019 -->
                 document.getElementById("weight").placeholder = "in kg";
             }
         }
-        function calculate(){
-            //get value for male n female or imperial and metric
+            //jQuery time
+            var current_fs, next_fs, previous_fs; //fieldsets
+            var left, opacity, scale; //fieldset properties which we will animate
+            var animating; //flag to prevent quick multi-click glitches
             
-            var year = document.getElementById('year').value;
+            $(".next").click(function(){
+                if(animating) return false;
+                animating = true;
+                
+                current_fs = $(this).parent();
+                next_fs = $(this).parent().next();
+                
+            //activate next step on progressbar using the index of next_fs
+            $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+            
+            //show the next fieldset
+            next_fs.show(); 
+            //hide the current fieldset with style
+            current_fs.animate({opacity: 0}, {
+                step: function(now, mx) {
+                    //as the opacity of current_fs reduces to 0 - stored in "now"
+                    //1. scale current_fs down to 50%
+                    scale = 1 - (1 - now) * 0.5;
+                    //2. bring next_fs from the right(50%)
+                    left = (now * 50)+"%";
+                    //3. increase opacity of next_fs to 1 as it moves in
+                    opacity = 1 - now;
+                    current_fs.css({
+                'transform': 'scale('+scale+')',
+                'position': 'absolute'
+                });
+                    next_fs.css({'left': left, 'opacity': opacity});
+                }, 
+                duration: 800, 
+                complete: function(){
+                    current_fs.hide();
+                    animating = false;
+                }, 
+                //this comes from the custom easing plugin
+                easing: 'easeInOutBack'
+            });
+            });
+            
+            $(".previous").click(function(){
+                if(animating) return false;
+                animating = true;
+                window.location.reload();
+                current_fs = $(this).parent();
+                previous_fs = $(this).parent().prev();
+                
+                //de-activate current step on progressbar
+                $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+                
+                //show the previous fieldset
+                previous_fs.show(); 
+                //hide the current fieldset with style
+                current_fs.animate({opacity: 0}, {
+                    step: function(now, mx) {
+                        //as the opacity of current_fs reduces to 0 - stored in "now"
+                        //1. scale previous_fs from 80% to 100%
+                        scale = 0.8 + (1 - now) * 0.2;
+                        //2. take current_fs to the right(50%) - from 0%
+                        left = ((1-now) * 50)+"%";
+                        //3. increase opacity of previous_fs to 1 as it moves in
+                        opacity = 1 - now;
+                        current_fs.css({'left': left});
+                        previous_fs.css({'transform': 'scale('+scale+')', 'opacity': opacity});
+                    }, 
+                    duration: 800, 
+                    complete: function(){
+                        current_fs.hide();
+                        animating = false;
+                    }, 
+                    //this comes from the custom easing plugin
+                    easing: 'easeInOutBack'
+                });
+            });
+            
+            $(".submit").click(function(){
+                return false;
+            })
+
+            function calculate(){
+                //get value for male n female or imperial and metric
+                var year = document.getElementById('year').value;
             var height = document.getElementById('height').value;
             var weight = document.getElementById('weight').value;
             var f = document.getElementById('system_dropdown');
@@ -693,13 +739,8 @@ created om 16/12/2019 -->
                         document.getElementById('Callorievalue').value = newBRMvalue;
                     }
             }
-            
-            
-            
+
             //calculate value for differfent activities
-            
-            
-            
             var bmrcallorie = document.getElementById('Callorievalue').value;
             //var getcalculatedvalue = $("input[name='activity']:checked").val();
             var e = document.getElementById('activity_dropdown');
@@ -738,162 +779,65 @@ created om 16/12/2019 -->
             }
             
             //calculate value for muscle gain or muscle loose
-           
-            
             var gl = document.getElementById('goal_dropdown');
             var goal_select = gl.options[gl.selectedIndex].value;
-            var calc_muscle = parseInt(document.getElementById('Calculatevalue').value);
-             
-            if (goal_select=="maintaian_weight"){
-                var newcalc_muscle = Math.floor(calc_muscle);
+            var calc_muscle1 = parseInt(document.getElementById('Calculatevalue').value); 
+            if (goal_select =="maintaian_weight"){
+                var newcalc_muscle = Math.floor(calc_muscle1 );
                 document.getElementById('Calculatecal').value = newcalc_muscle;
             
             }
-            else if(goal_select=="mild_weight_loss"){
-                var newcalc_muscle = Math.floor(calc_muscle - 250) ;
+            else if(goal_select =="mild_weight_loss"){
+                var newcalc_muscle = Math.floor(calc_muscle1 - 1000) ;
                 document.getElementById('Calculatecal').value = newcalc_muscle;
             
             }
-            else if(goal_select =="weight_loss"){
-                var newcalc_muscle = Math.floor(calc_muscle - 500 ) ;
+            else if(goal_select == "weight_loss"){
+                var newcalc_muscle = Math.floor(calc_muscle1 - 500 ) ;
                 document.getElementById('Calculatecal').value = newcalc_muscle;
             }
-            else if(goal_select =="extreme_weight_loss"){
-                var newcalc_muscle = Math.floor(calc_muscle - 1000) ;
+            else if(goal_select == "extreme_weight_loss"){
+                var newcalc_muscle = Math.floor(calc_muscle1 - 250 ) ;
                 document.getElementById('Calculatecal').value = newcalc_muscle;
             }
-            else if(goal_select =="mild_weight_gain"){
-                var newcalc_muscle = Math.floor(calc_muscle + 250) ;
+            else if(goal_select == "mild_weight_gain"){
+                var newcalc_muscle = Math.floor(calc_muscle1 + 250) ;
                 document.getElementById('Calculatecal').value = newcalc_muscle;
             }
-            else if(goal_select =="weight_gain"){
-                var newcalc_muscle = Math.floor(calc_muscle + 500) ;
+            else if(goal_select == "weight_gain"){
+                var newcalc_muscle = Math.floor(calc_muscle1 + 500) ;
                 document.getElementById('Calculatecal').value = newcalc_muscle;
             }
             else if(goal_select =="fast_Weight"){
-                var newcalc_muscle = Math.floor(calc_muscle + 1000) ;
+                var newcalc_muscle = Math.floor(calc_muscle1 * 1000) ;
                 document.getElementById('Calculatecal').value = newcalc_muscle;
             }
-            
-        //calculate table value for muscle gain or muscle loose
-        
-            
-            // var gl = document.getElementById('goal_dropdown');
-            // var goal_select = gl.options[gl.selectedIndex].value;
-           
-            var calc_muscle1 = parseInt(document.getElementById('Calculatevalue').value); 
-            var newcalc_muscle1 = Math.floor(calc_muscle1);
+            //calculate table value for muscle gain or muscle loose
+            var calc_muscle = parseInt(document.getElementById('Calculatevalue').value); 
+            var newcalc_muscle1 = Math.floor(calc_muscle * 1 );
             document.getElementById('Calculatecal1').value = newcalc_muscle1;
             
-            var newcalc_muscle2 = Math.floor(calc_muscle1 - 250) ;
+            var newcalc_muscle2 = Math.floor(calc_muscle - 1000) ;
             document.getElementById('Calculatecal2').value = newcalc_muscle2;
             
-            var newcalc_muscle3 = Math.floor(calc_muscle1 - 500 ) ;
+        
+            var newcalc_muscle3 = Math.floor(calc_muscle -500 ) ;
             document.getElementById('Calculatecal3').value = newcalc_muscle3;
             
-            var newcalc_muscle4 = Math.floor(calc_muscle1 - 1000) ;
+            var newcalc_muscle4 = Math.floor(calc_muscle - 250) ;
             document.getElementById('Calculatecal4').value = newcalc_muscle4;
             
-            var newcalc_muscle5 = Math.floor(calc_muscle1 + 250) ;
+            var newcalc_muscle5 = Math.floor(calc_muscle + 250 ) ;
             document.getElementById('Calculatecal5').value = newcalc_muscle5;
             
-            var newcalc_muscle6 = Math.floor(calc_muscle1 + 500) ;
+            var newcalc_muscle6 = Math.floor(calc_muscle + 500) ;
             document.getElementById('Calculatecal6').value = newcalc_muscle6;
             
-            var newcalc_muscle7 = Math.floor(calc_muscle1 + 1000) ;
+            var newcalc_muscle7 = Math.floor(calc_muscle + 1000) ;
             document.getElementById('Calculatecal7').value = newcalc_muscle7;
-            
-        }
-        //jQuery time
-        var current_fs, next_fs, previous_fs; //fieldsets
-        var left, opacity, scale; //fieldset properties which we will animate
-        var animating; //flag to prevent quick multi-click glitches
-            
-        $(".next").click(function(){
-            if( val_year.value == "" || val_height.value == "" || val_weight.value == "")
-            {
-                return false;
-            }
-            if(animating) return false;
-            animating = true;
-            
-            current_fs = $(this).parent();
-            next_fs = $(this).parent().next();
-            
 
-        //activate next step on progressbar using the index of next_fs
-        // $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-        
-        //show the next fieldset
-        next_fs.show(); 
-        //hide the current fieldset with style
-        current_fs.animate({opacity: 0}, {
-            step: function(now, mx) {
-                //as the opacity of current_fs reduces to 0 - stored in "now"
-                //1. scale current_fs down to 50%
-                scale = 1 - (1 - now) * 0.5;
-                //2. bring next_fs from the right(50%)
-                left = (now * 50)+"%";
-                //3. increase opacity of next_fs to 1 as it moves in
-                opacity = 1 - now;
-                current_fs.css({
-            'transform': 'scale('+scale+')',
-            'position': 'absolute'
-            });
-                next_fs.css({'left': left, 'opacity': opacity});
-            }, 
-            duration: 800, 
-            complete: function(){
-                current_fs.hide();
-                animating = false;
-            }, 
-            //this comes from the custom easing plugin
-            easing: 'easeInOutBack'
-            });
-            });
-            
-        $(".previous").click(function(){
-            if(animating) return false;
-            animating = true;
-            window.location.reload();
-            current_fs = $(this).parent();
-            previous_fs = $(this).parent().prev();
-            
-            //de-activate current step on progressbar
-            // $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
-            
-            //show the previous fieldset
-            previous_fs.show(); 
-            //hide the current fieldset with style
-            current_fs.animate({opacity: 0}, {
-                step: function(now, mx) {
-                    //as the opacity of current_fs reduces to 0 - stored in "now"
-                    //1. scale previous_fs from 80% to 100%
-                    scale = 0.8 + (1 - now) * 0.2;
-                    //2. take current_fs to the right(50%) - from 0%
-                    left = ((1-now) * 50)+"%";
-                    //3. increase opacity of previous_fs to 1 as it moves in
-                    opacity = 1 - now;
-                    current_fs.css({'left': left});
-                    previous_fs.css({'transform': 'scale('+scale+')', 'opacity': opacity});
-                }, 
-                duration: 800, 
-                complete: function(){
-                    current_fs.hide();
-                    animating = false;
-                }, 
-                //this comes from the custom easing plugin
-                easing: 'easeInOutBack'
-            });
-            });
-            
-        $(".submit").click(function(){
-                return false;
-            })
-            
-            
-          
-            
+        }
+    
                 
     </script>
 </body>
